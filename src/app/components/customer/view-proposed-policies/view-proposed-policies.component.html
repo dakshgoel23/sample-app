@@ -1,0 +1,37 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <div class="success-popup" *ngIf="successMsg">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i> <!-- Success icon -->
+    </div>
+    <div class="success-message">
+      {{ successMsg }}
+    </div>
+  </div>
+
+  <div class="error-popup" *ngIf="errorMsg">
+    <div class="error-icon">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+    <div class="error-message">
+      {{ errorMsg }}
+    </div>
+  </div>
+
+<h1 style="text-align: center; color: #d4af37; margin-top: 20px;">Proposed Policies</h1>
+    <div class="container">
+        <div class="card"  *ngFor="let p of policies">
+            <div class="card-header">{{p.name}}</div>
+            <div class="card-body">
+                <p><strong>Premium Amount:</strong> {{p.premium_amount}}</p>
+                <p><strong>Coverage Amount:</strong> {{p.coverage_amount}}</p>
+                <p><strong>Duration[In Months]:</strong> {{p.duration_months}}</p>
+                <p><strong>Type:</strong> {{p.type}}</p>
+                <p><strong>Vehicle:</strong> {{p.vehicle.manufacturer}}{{p.vehicle.model}}</p>
+            </div>
+            <div class="card-footer">
+                <button class="accept-button" (click)="acceptPolicy(p)">Accept Policy</button>
+                <button class="accept-button" (click)="rejectPolicy(p)">Reject Policy</button>
+            </div>
+        </div>
+    </div>

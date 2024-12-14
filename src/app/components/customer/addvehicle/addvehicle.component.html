@@ -1,0 +1,73 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<div class="card mt-5">
+  <div class="error-popup" *ngIf="errorMsg">
+    <div class="error-icon">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+    <div class="error-message">
+      {{ errorMsg }}
+    </div>
+  </div>
+
+  <div class="success-popup" *ngIf="successMsg">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i> <!-- Success icon -->
+    </div>
+    <div class="success-message">
+      {{ successMsg }}
+    </div>
+  </div>
+
+  <div class="card-header">
+    <span style="font-size: 2rem;"> Add Vehicle</span>
+  </div>
+  <div class="card-body">
+    <form class="row g-3" (ngSubmit)="onSubmit()" #vehicleForm="ngForm">
+      <div class="col-12">
+        <label for="registration_number" class="form-label">Registration Number</label>
+        <input 
+          type="text" class="form-control" name="registration_number" [(ngModel)]="registration_number" required>
+          <small *ngIf="vehicleForm.controls['registration_number']?.invalid && vehicleForm.controls['registration_number']?.touched" class="text-danger">Registration Number is mandatory</small>
+      </div>
+      <div class="col-md-6">
+        <label for="manufacturer" class="form-label">Manufacturer</label>
+        <input 
+          type="text" class="form-control"  name="manufacturer" [(ngModel)]="manufacturer" placeholder="e.g., Hyundai" required>
+          <small *ngIf="vehicleForm.controls['manufacturer']?.invalid && vehicleForm.controls['manufacturer']?.touched" class="text-danger">Manufacturer is mandatory</small>
+      </div>
+      <div class="col-md-6">
+        <label for="model" class="form-label">Model</label>
+        <input 
+          type="text" class="form-control" name="model" [(ngModel)]="model" placeholder="e.g., Verna" required>
+          <small *ngIf="vehicleForm.controls['model']?.invalid && vehicleForm.controls['model']?.touched" class="text-danger">Model is mandatory</small>
+      </div>
+      <div class="col-md-4">
+        <label for="category" class="form-label">Vehicle Category</label>
+        <select 
+          class="form-select" name="category" [(ngModel)]="category" required>
+          <option value="" disabled selected>Choose...</option>
+          <option [value]="c" *ngFor="let c of cate">
+            {{c}}
+          </option>
+          
+        </select>
+        <small *ngIf="vehicleForm.controls['category']?.invalid && vehicleForm.controls['category']?.touched" class="text-danger">Category is mandatory</small>
+      </div>
+      <div class="col-md-4">
+        <label for="fuelType" class="form-label">Fuel Type</label>
+        <select 
+          class="form-select"  id="fuel_type" name="fuel_type" [(ngModel)]="fuel_type" required>
+          <option value="" disabled selected>Choose...</option>
+          <option [value]="f" *ngFor="let f of ftype">
+            {{f}}
+          </option>
+        </select>
+        <small *ngIf="vehicleForm.controls['fuel_type']?.invalid && vehicleForm.controls['fuel_type']?.touched" class="text-danger">Fuel Type is mandatory</small>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <button type="submit" class="btn btn-primary" [disabled]="!vehicleForm.valid" (click)="onSubmit()">Save Details</button>
+    <button (click)="clearForm()" class="btn btn-secondary ms-2">Reset</button>
+  </div>
+</div>

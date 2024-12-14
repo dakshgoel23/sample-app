@@ -24,10 +24,13 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },"src/assets"
             ],
             "styles": [
-              "src/styles.css"
+             "src/styles.css", 
+             "bootstrap/dist/css/bootstrap.min.css",
+             "bootstrap-icons/font/bootstrap-icons.css"
+             
             ],
             "scripts": []
           },

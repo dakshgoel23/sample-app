@@ -1,0 +1,46 @@
+<!-- <h1 style="text-align: center; color: #d4af37; margin-top: 20px;">Proposed Policies</h1>
+    <div class="container">
+        <div class="card"  *ngFor="let p of policies">
+            <div class="card-header">{{p.policy.name}}</div>
+            <div class="card-body">
+                <p><strong>Premium Amount:</strong> {{p.policy.premium_amount}}</p>
+                <p><strong>Coverage Amount:</strong> {{p.policy.coverage_amount}}</p>
+                <p><strong>Duration[In Months]:</strong> {{p.policy.duration_months}}</p>
+                <p><strong>Type:</strong> {{p.policy.type}}</p>
+                <p><strong>Vehicle:</strong> {{p.policy.vehicle.manufacturer}}{{p.policy.vehicle.model}}</p>
+            </div>
+        </div>
+    </div> -->
+
+
+
+    <h1 style="text-align: center; color: #d4af37; margin-top: 20px;">Active Policies</h1>
+<div class="container">
+  <div class="card" *ngFor="let p of policies">
+    <div class="card-content">
+      <div class="card-header">
+        <h3>{{ p.policy.name }}</h3>
+      </div>
+      <div class="card-body">
+        <p><strong>Premium Amount:</strong> {{ p.policy.premium_amount}}</p>
+        <p><strong>Coverage Amount:</strong> {{ p.policy.coverage_amount}}</p>
+        <p><strong>Duration (Months):</strong> {{ p.policy.duration_months }}</p>
+        <p><strong>Type:</strong> {{ p.policy.type }}</p>
+      </div>
+    </div>
+    <div class="card-hover">
+      <h4>Vehicle Details:</h4>
+      <p><strong>Manufacturer:</strong> {{ p.policy.vehicle.manufacturer }}</p>
+      <p><strong>Model:</strong> {{ p.policy.vehicle.model }}</p>
+      <p><strong>Registration No.:</strong> {{ p.policy.vehicle.registration_number }}</p>
+      <h4>Policy Details:</h4>
+      <p><strong>Name:</strong> {{ p.policy.name }}</p>
+      <p><strong>Premium Amount:</strong> {{ p.policy.premium_amount}}</p>
+      <p><strong>Coverage Amount:</strong> {{ p.policy.coverage_amount}}</p>
+      <p><strong>Type:</strong> {{ p.policy.type }}</p>
+      <h4>Validity:</h4>
+      <p><strong>Date of Purchase:</strong> {{ p.date_of_purchase }}</p>
+      <p><strong>Date of Expiry:</strong> {{ p.date_of_expiry }}</p>
+    </div>
+  </div>
+</div>

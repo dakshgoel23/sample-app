@@ -1,0 +1,69 @@
+<div class="toggle-container">
+    <button 
+      class="btn btn-secondary" 
+      [class.active]="showCustomers" 
+      (click)="toggleView('customer')">
+      Customers
+    </button>
+    <button 
+      class="btn btn-secondary" 
+      [class.active]="!showCustomers" 
+      (click)="toggleView('executive')">
+      Executives
+    </button>
+  </div>
+  
+  <div class="search-container">
+    <input 
+      type="text" 
+      class="form-control" 
+      placeholder="Search by name..." 
+      [(ngModel)]="searchQuery" 
+      (input)="searchUser()">
+  </div>
+  <div class="table-container">
+  <div *ngIf="showCustomers">
+    <h2>Customers</h2>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>User Address</th>
+          <th>User Role</th>
+          <th>User Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of filteredCustomers">
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.address.address }}, {{ customer.address.city }} - {{ customer.address.pincode }}</td>
+          <td>{{ customer.user.role }}</td>
+          <td>{{ customer.phone }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="!showCustomers">
+    <h2>Executives</h2>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>User Address</th>
+          <th>User Role</th>
+          <th>User Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let executive of filteredExecutives">
+          <td>{{ executive.name }}</td>
+          <td>{{ executive.address.address }}, {{ executive.address.city }} - {{ executive.address.pincode }}</td>
+          <td>{{ executive.user.role }}</td>
+          <td>{{ executive.phone }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  

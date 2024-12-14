@@ -1,0 +1,47 @@
+<div class="viewPolicy-container" style="text-align: center; margin-left: 50px;">
+    <div>
+        <!-- SECTION 1 -->
+        <div class="btn-group my-3" role="group">
+            <button class="btn btn-warning rounded-pill px-3" style="margin-right: 10px;" type="button" (click)="fetchPolicies('PROPOSED')">Proposed</button>
+            <button class="btn btn-success rounded-pill px-3" style="margin-right: 10px;" type="button" (click)="fetchPolicies('ACCEPTED')">Accepted</button>
+            <button class="btn btn-danger rounded-pill px-3" style="margin-right: 10px;" type="button" (click)="fetchPolicies('REJECTED')">Rejected</button>
+           
+        </div>
+        <!-- SECTION 2 -->
+        <table class="styled-table" style="margin-left: 50px;">
+            <thead>
+              <tr>
+                <th>Customer Name </th>
+                <th>Vehicle Name</th>
+                <th>Policy Type</th>
+                <th>View More</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of policy">
+                <td>{{ d.vehicle.customer.name }}</td>
+                <td>{{ d.vehicle.manufacturer}} {{ d.vehicle.model}}</td>
+                <td>{{d.type}} </td>
+                <td><button class="btn btn-primary" (click)="showDeatils(d)">Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- SECTION 3 -->
+
+          <div id="details-panel" class="details-panel" *ngIf="selectedPolicy"style="margin-left: 50px; width: 700px;">
+          <h3>All Details</h3>
+          <div class="details-content">
+            <p><strong>Customer Name:</strong> {{ selectedPolicy.vehicle.customer.name }}</p>
+            <p><strong>Customer Contact:</strong> {{ selectedPolicy.vehicle.customer.phone }}</p>
+            <p><strong>Vehicle Name:</strong> {{ selectedPolicy.vehicle.manufacturer }} {{ selectedPolicy.vehicle.model }}</p>
+            <p><strong>Vehicle Registration Number:</strong> {{ selectedPolicy.vehicle.registration_number }}</p>
+            <p><strong>Vehicle Category:</strong> {{ selectedPolicy.vehicle.category }}</p>
+            <p><strong>Policy Premium:</strong> {{ selectedPolicy.premium_amount }}</p>
+            <p><strong>Coverage Amount:</strong> {{ selectedPolicy.coverage_amount }}</p>
+            <p><strong>Duration[In Months]:</strong> {{ selectedPolicy.duration_months }}</p>
+            <p><strong>Policy Type:</strong> {{ selectedPolicy.type }}</p>
+          </div>
+        </div>
+
+    </div>
+</div>

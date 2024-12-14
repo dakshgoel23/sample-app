@@ -1,0 +1,126 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <div class="inspection-container">
+
+    <div class="error-popup" *ngIf="errorMsg">
+      <div class="error-icon">
+        <i class="fa fa-exclamation-circle"></i>
+      </div>
+      <div class="error-message">
+        {{ errorMsg }}
+      </div>
+    </div>
+  
+    <div class="success-popup" *ngIf="successMsg">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i> <!-- Success icon -->
+      </div>
+      <div class="success-message">
+        {{ successMsg }}
+      </div>
+    </div>
+
+    <h2 style="text-align: center;">Booked Inspections</h2>
+    <div class="table-wrapper" style=" text-align: center;">
+      <table class="styled-table" style="margin-left: 50px;">
+        <thead>
+          <tr>
+            <th>Customer Name </th>
+            <th>Date of Inspection</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of inspection">
+            <td>{{ d.vehicle.customer.name }}</td>
+            <td>{{ d.inspectionDate}}</td>
+            <td>{{d.vehicle.customer.address.address}} {{d.vehicle.customer.address.city}}</td>
+            <td>
+              <button (click)="openForm(d)">Action</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  <div class="container mt-5 " *ngIf="selectedBooking"  style="margin-left: 40px;">
+    <div class="card">
+      <div class="card-header">
+        <h3>Inspection Report</h3>
+      </div>
+      <div class="card-body">
+        <!-- Section 1: Customer Details -->
+          <h5 style="font-weight: bold;">Customer Details</h5>
+          <div class="row ">
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" [value]="selectedBooking.vehicle.customer.name" readonly />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Address</label>
+              <input type="text" class="form-control" [value]="selectedBooking.vehicle.customer.address.address + ' ' +selectedBooking.vehicle.customer.address.city" readonly/>
+            </div>
+          </div>
+          <hr style="border: 0; height: 5px; background-color: black; margin: 20px 0;" />
+  
+          <!-- Section 2: Vehicle Details -->
+          <h5 style="font-weight: bold;" class="mt-3">Vehicle Details</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">Manufacturer and Model</label>
+              <input type="text" class="form-control" [value]="selectedBooking.vehicle.manufacturer +' '+ selectedBooking.vehicle.model"readonly/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Registration Number</label>
+              <input type="text" class="form-control" [value]="selectedBooking.vehicle.registration_number" readonly />
+            </div>
+          </div>
+          <hr/>
+          <hr style="border: 0; height: 5px; background-color: black; margin: 20px 0;" />
+           <!-- Section 3: Fill Inspection Form -->
+          <form (ngSubmit)="completeInspection()" #inspectionform="ngForm" > 
+          <h5  style="font-weight: bold;" class="mt-3">Fill Inspection Form</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label"> Driver Profile</label>
+              <textarea  name="driver_profile" class="form-control" [(ngModel)]="driver_profile" required></textarea>
+              <small *ngIf="inspectionform.controls['driver_profile']?.invalid && inspectionform.controls['driver_profile']?.touched" class="text-danger">Please fill Driver Profile</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"> Vehicle Condition</label>
+              <textarea  name="vehicle_condition" class="form-control" [(ngModel)]="vehicle_condition"required></textarea>
+              <small *ngIf="inspectionform.controls['vehicle_condition']?.invalid && inspectionform.controls['vehicle_condition']?.touched" class="text-danger">Please fill detailed Vehicle Condition</small>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="form-label">Inspection Report </label>
+              <textarea  name="inspectionReport" class="form-control" [(ngModel)]="inspectionReport" required ></textarea>
+              <small *ngIf="inspectionform.controls['inspectionReport']?.invalid && inspectionform.controls['inspectionReport']?.touched" class="text-danger">Inspection Report is mandatory</small>
+            </div> 
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+                <label class="form-label">Policy Type</label>
+                <input type="text" class="form-control" [value]=selectedBooking.want_coverage readonly/>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Inspection Date</label>
+              <input type="text" class="form-control" [value]=selectedBooking.inspectionDate readonly />
+          </div>
+          
+          </div>
+
+          </form>
+      </div>
+  
+      <!-- Footer -->
+      <div class="card-footer text-end">
+        <button (click)="completeInspection()" [disabled]="!inspectionform.valid" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  

@@ -1,0 +1,44 @@
+<!-- <div>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let img of customer?.images">
+            <div class="card">
+                <div class="card-header">
+                    {{img.fileName}}
+                </div>
+                <div class="card-body ">
+                    <img src={{img.path}} style="width: 18rem;">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <hr>
+    <div>
+        <input type="file" (change)="onFileSelect($event)"> 
+        <button class="btn btn-primary" (click)="uploadFile()">Upload</button>
+    </div>
+    </div> -->
+
+
+
+    <div class="container">
+        <h2 class="text-center mt-4">Uploaded Documents</h2>
+        <div class="row">
+            <div class="col-sm-4 mb-4" *ngFor="let img of customer?.images">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center bg-primary text-white">
+                        {{ img.fileName }}
+                    </div>
+                    <div class="card-body text-center">
+                        <img [src]="img.path" class="img-fluid rounded" alt="Uploaded Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="upload-section text-center">
+            <input type="file" (change)="onFileSelect($event)" class="form-control-file mb-3">
+            <button class="btn btn-primary" (click)="uploadFile()">Upload Document</button>
+        </div>
+    </div>
+    

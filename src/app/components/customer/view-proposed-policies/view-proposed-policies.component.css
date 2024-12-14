@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    border: 2px solid #d4af37;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2f7f31;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    margin-bottom: 15px;
+}
+
+.card-body p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.accept-button {
+    background-color: #2f7f31;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.accept-button:hover {
+    background-color: #1e5721;
+}
+
+.accept-button:active {
+    transform: scale(0.95);
+}
+
+
+
+
+
+  /* Success Popup Container */
+  .success-popup {
+    position: fixed;
+    top: 20px;
+    right: -400px; /* Start off-screen */
+    background: #4caf50; /* Success green color */
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+    animation: slide-in 0.5s forwards, slide-out 0.5s 3s forwards; /* In and out animations */
+  }
+  
+  /* Success Icon */
+  .success-icon {
+    background: #fff;
+    color: #4caf50;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Success Message */
+  .success-message {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Slide-in Animation */
+  @keyframes slide-in {
+    from {
+      right: -400px;
+    }
+    to {
+      right: 20px;
+    }
+  }
+  
+  /* Slide-out Animation */
+  @keyframes slide-out {
+    from {
+      right: 20px;
+      opacity: 1;
+    }
+    to {
+      right: -400px;
+      opacity: 0;
+    }
+  }
+  
+
+  /* Error Popup Container */
+.error-popup {
+  position: fixed;
+  top: 20px;
+  right: -400px; /* Start off-screen */
+  background: #ff4d4d; /* Error red color */
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+  animation: slide-in 0.5s forwards, slide-out 0.5s 3s forwards; /* In and out animations */
+}
+
+/* Error Icon */
+.error-icon {
+  background: #fff;
+  color: #ff4d4d;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Error Message */
+.error-message {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Slide-in Animation */
+@keyframes slide-in {
+  from {
+    right: -400px;
+  }
+  to {
+    right: 20px;
+  }
+}
+
+/* Slide-out Animation */
+@keyframes slide-out {
+  from {
+    right: 20px;
+    opacity: 1;
+  }
+  to {
+    right: -400px;
+    opacity: 0;
+  }
+}
+
+  
+  
+  
+  

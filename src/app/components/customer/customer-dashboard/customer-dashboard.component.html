@@ -1,0 +1,17 @@
+
+<div class="mb-0">
+    <div class="row ">
+        <div class="col-3">
+             <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-7" >
+            <div class="welcome-container">
+                <div class="welcome-content">
+                  <h5 class="welcome-title">Welcome, <span class="customer-name">{{customer?.name}}</span>!</h5>
+                </div>
+              </div>
+              
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

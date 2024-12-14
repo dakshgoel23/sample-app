@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+    <body>
+        <main class="d-flex flex-nowrap">
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 350px; height: 900px;">
+    
+      <span class="fs-3">Admin Dashboard</span>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li>
+        <a  class="nav-link text-white" [routerLink]="['/admin-dashboard/']">
+         Onboard Executive
+        </a>
+      </li>
+      <li>
+        <a class="nav-link text-white" [routerLink]="['/admin-dashboard/view-allusers']">
+          View All Users
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white" [routerLink]="['/admin-dashboard/view-allpolicies']">
+          View All Policies
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a 
+        href="#" 
+        class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false">
+        <strong>User</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#" (click)="logout()">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+</body>

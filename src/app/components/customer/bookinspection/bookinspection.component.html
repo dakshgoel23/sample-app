@@ -1,0 +1,63 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<div class="card mt-5">
+  <div class="error-popup" *ngIf="errorMsg">
+    <div class="error-icon">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+    <div class="error-message">
+      {{ errorMsg }}
+    </div>
+  </div>
+
+  <div class="success-popup" *ngIf="successMsg">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i> <!-- Success icon -->
+    </div>
+    <div class="success-message">
+      {{ successMsg }}
+    </div>
+  </div>
+  <div class="card-header">
+    <span style="font-size: 2rem;">Book Inspection For Your Vehicle</span>
+  </div>
+  <form class="row g-3" (ngSubmit)="bookInspection()" #inspectionform="ngForm">
+  <div class="card-body">
+    <div class="col-md-6">
+      <label class="form-label">Choose Vehicle </label>
+      <select class="form-select" name="selectedVehicleId" [(ngModel)]="selectedVehicleId" required>
+        <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+          {{ vehicle.model }}
+        </option>
+      </select>
+      <small *ngIf="inspectionform.controls['selectedVehicleId']?.invalid && inspectionform.controls['selectedVehicleId']?.touched" class="text-danger">Vehicle is mandatory</small>
+    </div>
+    <div class="col-md-6 mt-2">
+      <label class="form-label">Enter Date</label>
+      <input
+        type="date"
+        class="form-control"
+        name="inspectionDate"
+        [(ngModel)]="inspectionDate"
+        placeholder="eg. 2024-12-11"
+        required
+      />
+      <small *ngIf="inspectionform.controls['inspectionDate']?.invalid && inspectionform.controls['inspectionDate']?.touched" class="text-danger">Inspection Date is mandatory</small>
+    </div>
+    <div class="col-md-6 mt-2">
+      <label class="form-label">Choose which type of coverage you want</label>
+      <select class="form-select" name="want_coverage" [(ngModel)]="want_coverage"  required>
+        <option value="" disabled selected>Choose...</option>
+        <option *ngFor="let t of type"  [value]="t">
+          {{t}}
+        </option>
+     
+      </select>
+      <small *ngIf="inspectionform.controls['want_coverage']?.invalid && inspectionform.controls['want_coverage']?.touched" class="text-danger">Please Choose which coverage you want</small>
+    </div>
+  </div>
+</form>
+  <div class="card-footer">
+    <button (click)="bookInspection()" [disabled]="!inspectionform.valid" class="btn btn-primary">Book</button>
+    <button (click)="clearForm()" class="btn btn-secondary ms-2">Reset</button>
+  </div>
+</div>

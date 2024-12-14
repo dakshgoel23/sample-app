@@ -1,0 +1,98 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<div class="container mt-5 " >
+
+  <div class="error-popup" *ngIf="errorMsg">
+    <div class="error-icon">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+    <div class="error-message">
+      {{ errorMsg }}
+    </div>
+  </div>
+
+  <div class="success-popup" *ngIf="successMsg">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i> <!-- Success icon -->
+    </div>
+    <div class="success-message">
+      {{ successMsg }}
+    </div>
+  </div>
+
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Onboard Executive</h3>
+      </div>
+      <div class="card-body">
+        <!-- Section 1: Executive Details -->
+        <h5>Executive Details</h5>
+        <form (ngSubmit)="onSignUp()" #signupform="ngForm">
+
+             <div class="mb-3">
+                <label class="form-label d-block">Choose Role of Executive:</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="roleOptions"  value="EXECUTIVE_INSURANCE" name="executive_insurance" [(ngModel)]="role" required >
+                    <label class="form-check-label" for="roleCustomer">EXECUTIVE_INSURANCE</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="roleOptions"  value="EXECUTIVE_INSPECTION" name="executive_inspection" [(ngModel)]="role" required>
+                    <label class="form-check-label" for="roleExecutive">EXECUTIVE_INSPECTION</label>
+                </div>
+            </div>
+
+
+             <div class="row mt-3">
+                <div class="col-md-6">
+                  <label class="form-label">Username</label>
+                  <input type="email" class="form-control" [(ngModel)]="username" name="username" required/>
+                  <small *ngIf="signupform.controls['username']?.invalid && signupform.controls['username']?.touched" class="text-danger">Username is mandatory</small>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control" [(ngModel)]="password" name="password" required/>
+                  <small *ngIf="signupform.controls['username']?.invalid && signupform.controls['username']?.touched" class="text-danger">Password is mandatory</small>
+                </div>
+              </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" [(ngModel)]="name" name="name" required/>
+              <small *ngIf="signupform.controls['name']?.invalid && signupform.controls['name']?.touched" class="text-danger">Name is mandatory</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Contact</label>
+              <input type="text" class="form-control" [(ngModel)]="phone" name="phone"  required minlength="10" maxlength="10"/>
+              <small *ngIf="signupform.controls['phone']?.invalid && signupform.controls['phone']?.touched" class="text-danger">Phone number must be 10 digits</small>
+            </div>
+          </div>
+  
+          <!-- Section 2: Address Details -->
+          <h5 class="mt-4">Address Details</h5>
+          <div class="col-md-6">
+            <label class="form-label " >Address</label>
+            <input type="text" class="form-control mb-4" [(ngModel)]="address" name="address" style="width: 500px;" required/>
+            <small *ngIf="signupform.controls['address']?.invalid && signupform.controls['address']?.touched" class="text-danger">Address is mandatory</small>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">City</label>
+              <input type="text" class="form-control" [(ngModel)]="city" name="city" required/>
+              <small *ngIf="signupform.controls['city']?.invalid && signupform.controls['city']?.touched" class="text-danger">City is mandatory</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Pincode</label>
+              <input type="text" class="form-control" [(ngModel)]="pincode" name="pincode" required/>
+              <small *ngIf="signupform.controls['pincode']?.invalid && signupform.controls['pincode']?.touched" class="text-danger">Pincode is mandatory</small>
+            </div>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Footer -->
+      <div class="card-footer text-end">
+        <button class="btn btn-primary" style="margin-right: 10px;" [disabled]="!signupform.valid" (click)="onSignUp()">Save</button>
+      </div>
+    </div>
+  </div>
+  

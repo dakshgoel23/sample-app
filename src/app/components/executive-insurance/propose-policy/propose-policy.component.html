@@ -1,0 +1,193 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<div class="inspection-container">
+
+  <div class="error-popup" *ngIf="errorMsg">
+    <div class="error-icon">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+    <div class="error-message">
+      {{ errorMsg }}
+    </div>
+  </div>
+
+  <div class="success-popup" *ngIf="successMsg">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i> <!-- Success icon -->
+    </div>
+    <div class="success-message">
+      {{ successMsg }}
+    </div>
+  </div>
+
+
+
+  <!-- SECTION 1 -->
+  <h2 style="text-align: center;">Completed Inspections</h2>
+  <div class="table-wrapper" style="text-align: center;">
+    <table class="styled-table" style="margin-left: 50px;">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Date of Inspection</th>
+          <th>Address</th>
+          <th>View Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of inspection">
+          <td>{{ d.vehicle.customer.name }}</td>
+          <td>{{ d.inspectionDate }}</td>
+          <td>{{ d.vehicle.customer.address.address }} {{ d.vehicle.customer.address.city }}</td>
+          <td>
+            <button (click)="viewDetails(d)">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div
+    id="details-panel"
+    class="details-panel"
+    *ngIf="selectedInspection"
+    style="margin-left: 50px; width: 700px;"
+  >
+    <h3>Inspection Details</h3>
+    <div class="details-content">
+      <p><strong>Customer Name:</strong> {{ selectedInspection.vehicle.customer.name }}</p>
+      <p><strong>Vehicle Name:</strong> {{ selectedInspection.vehicle.manufacturer }} {{ selectedInspection.vehicle.model }}</p>
+      <p><strong>Want Coverage:</strong> {{ selectedInspection.want_coverage }}</p>
+      <p><strong>Vehicle Condition:</strong> {{ selectedInspection.vehicle_condition }}</p>
+      <p><strong>Driver Profile:</strong> {{ selectedInspection.driver_profile }}</p>
+      <p><strong>Inspection Report:</strong> {{ selectedInspection.inspectionReport }}</p>
+      <p><strong>Inspection Date:</strong> {{ selectedInspection.inspectionDate }}</p>
+      <p><strong>Executive Name:</strong> {{ selectedInspection.executive.name }}</p>
+      <button (click)="proposePolicy()">Propose Policy</button>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="container mt-5" *ngIf="showPolicyForm" style="margin-left: 40px;">
+    <div class="card">
+      <div class="card-header">
+        <h3>Propose Policy</h3>
+      </div>
+      <div class="card-body">
+        <form #policyForm="ngForm">
+          <h5 style="font-weight: bold;" class="mt-3">Fill Calculation Details</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">Base Premium</label>
+              <input
+                type="text"
+                class="form-control"
+                name="basePremium"
+                [(ngModel)]="policyData.premiumCalculation.basePremium"
+                (input)="calculatePremium()"
+                required
+              />
+              <small *ngIf="policyForm.controls['basePremium']?.invalid && policyForm.controls['basePremium']?.touched" class="text-danger">Premium amount is mandatory</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Vehicle Risk Factor</label>
+              <input
+                type="text"
+                class="form-control"
+                name="vehicleRiskFactor"
+                [(ngModel)]="policyData.premiumCalculation.vehicleRiskFactor"
+                (input)="calculatePremium()"
+                required
+              />
+              <small *ngIf="policyForm.controls['vehicleRiskFactor']?.invalid && policyForm.controls['vehicleRiskFactor']?.touched" class="text-danger">Please provide amount or enter 0</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">Price of Coverage</label>
+              <input
+                type="text"
+                class="form-control"
+                name="priceOfCoverage"
+                [(ngModel)]="policyData.premiumCalculation.priceOfCoverage"
+                (input)="calculatePremium()"
+                required
+              />
+              <small *ngIf="policyForm.controls['priceOfCoverage']?.invalid && policyForm.controls['priceOfCoverage']?.touched" class="text-danger">Please provide amount or enter 0</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Driver Risk Factor</label>
+              <input
+                type="text"
+                class="form-control"
+                name="driverRiskFactor"
+                [(ngModel)]="policyData.premiumCalculation.driverRiskFactor"
+                (input)="calculatePremium()"
+                required
+              />
+              <small *ngIf="policyForm.controls['driverRiskFactor']?.invalid && policyForm.controls['driverRiskFactor']?.touched" class="text-danger">Please provide amount or enter 0</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Discount</label>
+              <input
+                type="text"
+                class="form-control"
+                name="discount"
+                [(ngModel)]="policyData.premiumCalculation.discount"
+                (input)="calculatePremium()"
+                required
+              />
+              <small *ngIf="policyForm.controls['discount']?.invalid && policyForm.controls['discount']?.touched" class="text-danger">Please provide amount or enter 0</small>
+            </div>
+          </div>
+
+          <hr style="border: 0; height: 5px; background-color: black; margin: 20px 0;" />
+
+          <h5 style="font-weight: bold;" class="mt-3">Fill Policy Details</h5>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="policyData.name" required />
+              <small *ngIf="policyForm.controls['name']?.invalid && policyForm.controls['name']?.touched" class="text-danger">Please enter name</small>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label class="form-label">Premium Amount</label>
+              <input type="text" class="form-control" name="premium_amount" [(ngModel)]="policyData.premium_amount" readonly />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Coverage Amount</label>
+              <input type="text" class="form-control" name="coverage_amount" [(ngModel)]="policyData.coverage_amount" required />
+              <small *ngIf="policyForm.controls['coverage_amount']?.invalid && policyForm.controls['coverage_amount']?.touched" class="text-danger">Please provide coverage amount</small>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Duration [In Months]</label>
+              <input
+                type="text"
+                class="form-control"
+                name="duration_months"
+                [(ngModel)]="policyData.duration_months"
+                required
+              />
+              <small *ngIf="policyForm.controls['duration_months']?.invalid && policyForm.controls['duration_months']?.touched" class="text-danger">Please provide months</small>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Policy Type</label>
+              <select class="form-select" name="type" [(ngModel)]="policyData.type" required>
+                <option value="" disabled selected>Choose...</option>
+                <option *ngFor="let t of type"  [value]="t">
+                  {{t}}
+                </option>
+              </select>
+              <small *ngIf="policyForm.controls['type']?.invalid && policyForm.controls['type']?.touched" class="text-danger">Please provide policy type</small>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer text-end">
+        <button [disabled]="!policyForm.valid" class="btn btn-primary" (click)="submitPolicy()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <img src="/assets/image2.png" alt="Logo"  style="height: 70px; margin-right: 50px;" />
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a  class="nav-link px-2 text-white" routerLink="/">Home</a></li>
+          <li><a href="#" class="nav-link px-2 text-white" [routerLink]="['/login-page']">Buy Policy</a></li>
+          <li><a  class="nav-link px-2 text-white" [routerLink]="['/about-us']">About</a></li>
+        </ul>
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2" [routerLink]="['/login-page']">Login</button>
+          <button type="button" class="btn btn-warning" [routerLink]="['/signup-page']">Sign-up</button>
+        </div>
+      </div>
+    </div>
+  </header>

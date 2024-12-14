@@ -1,0 +1,21 @@
+<div class="inspection-container">
+    <h2 style="text-align: center;">Completed Inspections</h2>
+    <div class="table-wrapper" style=" text-align: center;">
+      <table class="styled-table" style="margin-left: 50px;">
+        <thead>
+          <tr>
+            <th>Customer Name </th>
+            <th>Date of Inspection</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of inspection">
+            <td>{{ d.vehicle.customer.name }}</td>
+            <td>{{ d.inspectionDate}}</td>
+            <td>{{d.vehicle.customer.address.address}} {{d.vehicle.customer.address.city}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>

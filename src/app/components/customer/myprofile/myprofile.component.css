@@ -1,0 +1,126 @@
+/* Error Popup Container */
+.error-popup {
+    position: fixed;
+    top: 20px;
+    right: -400px; /* Start off-screen */
+    background: #ff4d4d; /* Error red color */
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+    animation: slide-in 0.5s forwards, slide-out 0.5s 3s forwards; /* In and out animations */
+  }
+  
+  /* Error Icon */
+  .error-icon {
+    background: #fff;
+    color: #ff4d4d;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Error Message */
+  .error-message {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Slide-in Animation */
+  @keyframes slide-in {
+    from {
+      right: -400px;
+    }
+    to {
+      right: 20px;
+    }
+  }
+  
+  /* Slide-out Animation */
+  @keyframes slide-out {
+    from {
+      right: 20px;
+      opacity: 1;
+    }
+    to {
+      right: -400px;
+      opacity: 0;
+    }
+  }
+  
+  
+  
+  /* Success Popup Container */
+  .success-popup {
+    position: fixed;
+    top: 20px;
+    right: -400px; /* Start off-screen */
+    background: #4caf50; /* Success green color */
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+    animation: slide-in 0.5s forwards, slide-out 0.5s 3s forwards; /* In and out animations */
+  }
+  
+  /* Success Icon */
+  .success-icon {
+    background: #fff;
+    color: #4caf50;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Success Message */
+  .success-message {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Slide-in Animation */
+  @keyframes slide-in {
+    from {
+      right: -400px;
+    }
+    to {
+      right: 20px;
+    }
+  }
+  
+  /* Slide-out Animation */
+  @keyframes slide-out {
+    from {
+      right: 20px;
+      opacity: 1;
+    }
+    to {
+      right: -400px;
+      opacity: 0;
+    }
+  }
+  
+  
+  
+  
+  
