@@ -14,12 +14,12 @@
 
 
 
-    <h1 style="text-align: center; color: #d4af37; margin-top: 20px;">Active Policies</h1>
+    <h1 style="text-align: center; color: #d4af37; margin-top: 20px;">All Policies</h1>
 <div class="container">
   <div class="card" *ngFor="let p of policies">
     <div class="card-content">
       <div class="card-header">
-        <h3>{{ p.policy.name }}</h3>
+        <h3>{{ p.policy.name }}-{{p.policy.status}}</h3>
       </div>
       <div class="card-body">
         <p><strong>Premium Amount:</strong> {{ p.policy.premium_amount}}</p>

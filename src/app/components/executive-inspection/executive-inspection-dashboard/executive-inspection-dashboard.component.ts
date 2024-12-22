@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { ExecutiveInspectionSidebarComponent } from '../executive-inspection-sidebar/executive-inspection-sidebar.component';
 import { MyProfileService } from '../../../service/myprofile.service';
 import { AuthService } from '../../../service/auth.service';
+import { HeaderLogoutComponent } from "../../../pages/header-logout/header-logout.component";
 
 @Component({
   selector: 'app-executive-inspection-dashboard',
-  imports: [RouterOutlet,ExecutiveInspectionSidebarComponent],
+  imports: [RouterOutlet, ExecutiveInspectionSidebarComponent, HeaderLogoutComponent],
   templateUrl: './executive-inspection-dashboard.component.html',
   styleUrl: './executive-inspection-dashboard.component.css'
 })

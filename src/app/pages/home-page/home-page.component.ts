@@ -1,10 +1,11 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AboutUsComponent } from '../about-us/about-us.component';
+import { HeaderComponent } from "../header/header.component";
 declare const bootstrap: any;
 @Component({
   selector: 'app-home-page',
-  imports: [RouterLink,AboutUsComponent],
+  imports: [RouterLink, AboutUsComponent, HeaderComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })

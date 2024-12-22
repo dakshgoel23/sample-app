@@ -1,3 +1,4 @@
+<app-header></app-header>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <div class="success-popup" *ngIf="successMsg">
     <div class="success-icon">
@@ -21,8 +22,18 @@
       <img src="/assets/image6.png" alt="Customer" />
     </div>
     <div class="form-content">
-      <h2>Enter Customer Details</h2>
+      <h2>Sign Up</h2>
       <form  #customerForm="ngForm" class="customer-form">
+        <div class="form-group">
+          <label for="name">Username</label>
+          <input type="text" id="username" name="username" [(ngModel)]="username"  placeholder="Enter your username" required/>
+          <small *ngIf="customerForm.controls['username']?.invalid && customerForm.controls['username']?.touched" class="text-danger">Name is mandatory</small>
+        </div>
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input type="password" id="password" name="password" [(ngModel)]="password"  placeholder="Enter your password" required/>
+          <small *ngIf="customerForm.controls['password']?.invalid && customerForm.controls['password']?.touched" class="text-danger">Name is mandatory</small>
+        </div>
         <div class="form-group">
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" [(ngModel)]="name"  placeholder="Enter your full name" required/>
@@ -35,9 +46,9 @@
         </div>
         <div class="form-group">
             <label for="phone">Aadhar Number</label>
-            <input type="text" id="phone" name="aadhar_number" [(ngModel)]="aadhar_number"  placeholder="Enter your aadhar number" required/>
+            <input type="text" id="phone" name="aadhar_number" [(ngModel)]="aadhar_number"  placeholder="Enter your aadhar number" minlength="12" maxlength="12" pattern="^[0-9]{12}$" required/>
             <small *ngIf="customerForm.controls['aadhar_number']?.invalid && customerForm.controls['aadhar_number']?.touched" class="text-danger">AadharNumber is mandatory</small>
-          </div>
+         </div>
         <div class="form-group">
           <label for="address">Address</label>
           <textarea id="address" name="address" [(ngModel)]="address"  placeholder="Enter your address" required></textarea>

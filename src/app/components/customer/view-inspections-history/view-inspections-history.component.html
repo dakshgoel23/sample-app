@@ -1,0 +1,28 @@
+<h1 style="text-align: center; color: #d4af37; margin-top: 20px;">Inspection History</h1>
+<div class="container">
+  <div class="card" *ngFor="let i of inspections">
+    <div class="card-content">
+      <div class="card-header">
+        <h3>{{i.status}}</h3>
+      </div>
+      <div class="card-body">
+        <p><strong>Vehicle Name:</strong> {{ i.vehicle.manufacturer}}{{i.vehicle.model}}</p>
+        <p><strong>Inspection Date:</strong> {{ i.inspectionDate}}</p>
+      </div>
+    </div>
+    <!-- <div class="card-hover">
+      <h4>Vehicle Details:</h4>
+      <p><strong>Manufacturer:</strong> {{ i.vehicle.manufacturer }}</p>
+      <p><strong>Model:</strong> {{ i.vehicle.model }}</p>
+      <p><strong>Registration No.:</strong> {{ i.vehicle.registration_number }}</p>
+      <h4>Inspection Details:</h4>
+      <p><strong>Vehicle Condition:</strong> {{ i.vehicle_condition }}</p>
+      <p><strong>Driver Profile:</strong> {{ i.driver_profile}}</p>
+      <p><strong>Want Coverage:</strong> {{ i.want_coverage}}</p>
+      <p><strong>Type:</strong> {{ p.policy.type }}</p>
+      <h4>Validity:</h4>
+      <p><strong>Date of Purchase:</strong> {{ p.date_of_purchase }}</p>
+      <p><strong>Date of Expiry:</strong> {{ p.date_of_expiry }}</p>
+    </div> -->
+  </div>
+</div>

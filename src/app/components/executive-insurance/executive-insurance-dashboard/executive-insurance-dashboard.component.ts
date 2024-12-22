@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { ExecutiveInsuranceSidebarComponent } from '../executive-insurance-sidebar/executive-insurance-sidebar.component';
 import { MyProfileService } from '../../../service/myprofile.service';
 import { AuthService } from '../../../service/auth.service';
+import { HeaderLogoutComponent } from "../../../pages/header-logout/header-logout.component";
 
 @Component({
   selector: 'app-executive-insurance-dashboard',
-  imports: [RouterOutlet,ExecutiveInsuranceSidebarComponent],
+  imports: [RouterOutlet, ExecutiveInsuranceSidebarComponent, HeaderLogoutComponent],
   templateUrl: './executive-insurance-dashboard.component.html',
   styleUrl: './executive-insurance-dashboard.component.css'
 })

@@ -13,6 +13,7 @@ export class BookinspectionService {
   //customer inspection tasks
   private getVehicleByCustomer = 'http://localhost:8081/vehicle/details/bycustomerId'
   private bookInspectionApi='http://localhost:8081/vehicle-inspection/book'
+  private inspectionHistoryApi='http://localhost:8081/vehicle-inspections/all'
 
   getVehiclesByCustomerId(customerId: number): Observable<any> {
     const httpOptions = {
@@ -30,6 +31,15 @@ export class BookinspectionService {
       })
     };
     return this.httpClient.post(this.bookInspectionApi+ "?vehicle_id="+ vehicle_id,booking,httpOptions)
+  }
+
+  public inspectionHistory(customer_id:any):Observable<any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+         Authorization: 'Bearer '+ localStorage.getItem('token')
+      })
+    };
+    return this.httpClient.get(this.inspectionHistoryApi,httpOptions)
   }
 
   //executive inspection tasks

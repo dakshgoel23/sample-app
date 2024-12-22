@@ -25,6 +25,7 @@ import { ViewProposedPoliciesComponent } from './components/customer/view-propos
 import { ViewActivePoliciesComponent } from './components/customer/view-active-policies/view-active-policies.component';
 import { AddDetailsComponent } from './pages/add-details/add-details.component';
 import { UploadDocumentsComponent } from './components/customer/upload-documents/upload-documents.component';
+import { ViewInspectionsHistoryComponent } from './components/customer/view-inspections-history/view-inspections-history.component';
 
 export const routes: Routes = [
     {
@@ -54,6 +55,9 @@ export const routes: Routes = [
             },
             {
                 path: 'bookinspection', component : BookinspectionComponent
+            },
+            {
+                path: 'view-inspection-history', component:ViewInspectionsHistoryComponent
             },
             {
                 path: 'view-proposed-policies' , component: ViewProposedPoliciesComponent

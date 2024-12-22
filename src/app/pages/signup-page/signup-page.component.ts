@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { MyProfileService } from '../../service/myprofile.service';
 import {  Router } from '@angular/router';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-signup-page',
-  imports: [FormsModule,NgIf],
+  imports: [FormsModule, NgIf, HeaderComponent],
   templateUrl: './signup-page.component.html',
   styleUrl: './signup-page.component.css'
 })

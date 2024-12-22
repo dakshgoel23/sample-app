@@ -5,11 +5,12 @@ import { FooterComponent } from '../../../pages/footer/footer.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { AuthService } from '../../../service/auth.service';
 import { MyProfileService } from '../../../service/myprofile.service';
+import { HeaderLogoutComponent } from '../../../pages/header-logout/header-logout.component';
 
 
 @Component({
   selector: 'app-customer-dashboard',
-  imports: [RouterOutlet,SidebarComponent],
+  imports: [RouterOutlet,SidebarComponent,HeaderLogoutComponent],
   templateUrl: './customer-dashboard.component.html',
   styleUrl: './customer-dashboard.component.css'
 })
