@@ -39,7 +39,7 @@ export class BookinspectionService {
          Authorization: 'Bearer '+ localStorage.getItem('token')
       })
     };
-    return this.httpClient.get(this.inspectionHistoryApi,httpOptions)
+    return this.httpClient.get(this.inspectionHistoryApi+"?customer_id="+customer_id,httpOptions)
   }
 
   //executive inspection tasks
